@@ -1,0 +1,8 @@
+{
+  "name": "secure-notes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/hash.js && node scripts/inject-sw.js"
+  }
+}

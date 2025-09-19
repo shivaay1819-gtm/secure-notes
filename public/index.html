@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <base href="/secure-notes/">
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="preload" href="app.css" as="style" />
+  <link rel="stylesheet" href="app.css" />
+  <title>Secure Notes</title>
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none';" />
+  <meta name="description" content="Offline-first encrypted notes. Your data stays with you." />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Secure Notes</h1>
+    <nav class="toolbar" aria-label="App toolbar">
+      <button id="newNoteBtn" class="btn primary" title="New note">New</button>
+      <button id="backupBtn" class="btn" title="Export encrypted backup">Backup</button>
+      <label for="restoreInput" class="btn" title="Import encrypted backup">Restore</label>
+      <input id="restoreInput" type="file" accept="application/json" hidden />
+      <button id="lockBtn" class="btn warn" title="Lock app">Lock</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Notes list">
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Search notes…" autocomplete="off" />
+      </div>
+      <ul id="notesList" class="notes-list" role="list"></ul>
+    </aside>
+
+    <section class="editor" aria-label="Editor">
+      <div class="meta">
+        <input id="titleInput" class="title" type="text" placeholder="Title" maxlength="160" />
+        <span id="statusBadge" class="badge">Saved</span>
+      </div>
+      <textarea id="contentInput" class="content" placeholder="Write securely…" rows="16"></textarea>
+    </section>
+  </main>
+
+  <dialog id="lockDialog" class="dialog">
+    <form method="dialog" id="unlockForm" class="lock-form">
+      <h2>Unlock your vault</h2>
+      <p class="muted">Notes are encrypted with your passphrase. Keep it strong.</p>
+      <label class="field">
+        <span>Passphrase</span>
+        <input id="passphraseInput" type="password" autocomplete="current-password" required />
+      </label>
+      <meter id="entropyMeter" min="0" low="40" high="80" max="120" value="0"></meter>
+      <div class="row">
+        <button id="createVaultBtn" class="btn">Create new vault</button>
+        <button id="unlockBtn" class="btn primary" value="unlock">Unlock</button>
+      </div>
+      <p id="lockError" class="error" role="alert"></p>
+    </form>
+  </dialog>
+
+  <template id="noteItemTpl">
+    <li class="note-item" tabindex="0">
+      <div class="note-title"></div>
+      <div class="note-snippet"></div>
+      <time class="note-time" datetime=""></time>
+    </li>
+  </template>
+
+  <script defer src="utils.js"></script>
+  <script defer src="sanitize.js"></script>
+  <script defer src="idb.js"></script>
+  <script defer src="crypto.js"></script>
+  <script defer src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+  </script>
+</body>
+</html>

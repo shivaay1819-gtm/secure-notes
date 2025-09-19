@@ -1,0 +1,12 @@
+{
+  "/secure-notes/index.html": "sha256-V+h3+MK3pZLiz/BTyYxcMME+xePDJ8RWt5+ur8cg81E=",
+  "/secure-notes/app.css": "sha256-Ps6b8CVKus8mKODDigfx6Fh7OrlhQGfPpHvuSQ9wWes=",
+  "/secure-notes/app.js": "sha256-PuL44ZqgQRCeoBvgOrVnWMD0z2inGJmt8FS4hBnviP0=",
+  "/secure-notes/sanitize.js": "sha256-LNBJ1H1kcwBOcbf//7tYtQbY1D+mEUrpWU9dtXpLN8Q=",
+  "/secure-notes/crypto.js": "sha256-Ma4otJL48y0J2m8k6MWvwuHJ4D+khJn6PoVYnNbKksg=",
+  "/secure-notes/idb.js": "sha256-TX59QmJ2iNqdJ5nymalk1YRJGhfDmknnNHmfnsEKKhI=",
+  "/secure-notes/utils.js": "sha256-fU2hJxmLo0l8wGWOYJ4Pu7/2NOiCIFCpw2VRDRTTBDo=",
+  "/secure-notes/manifest.webmanifest": "sha256-gZQVylg6/yNcrfQkHvzTj0efHaZDJUNHE0TGWGX5gCM=",
+  "/secure-notes/icons/icon-192.png": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+  "/secure-notes/icons/icon-512.png": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+}
